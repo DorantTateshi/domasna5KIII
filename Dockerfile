@@ -1,6 +1,6 @@
 FROM nginx
 
-WORKDIR /app
+#WORKDIR /app
 
 COPY . /app
 
