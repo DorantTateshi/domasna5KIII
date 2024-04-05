@@ -1,15 +1,16 @@
-FROM ubuntu
+FROM ubuntu:latest
 
-WORKDIR /app
+# Install Nginx and clean up the package manager cache
+RUN apt-get update \
+    && apt-get install -y nginx \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY . /app
-
-RUN apt-get update
-
-RUN apt-get install nginx -y
-
+# Copy the Nginx configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
 
+# Expose port 3000
 EXPOSE 3000
 
-CMD ["nginx","-g","daemon off;"]
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
