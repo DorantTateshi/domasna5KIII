@@ -1,4 +1,4 @@
-name: Publish Docker image to Docker Hub and run super lint
+name: Publish Docker image to Docker Hub and run Super lint
 
 on:
   push:
